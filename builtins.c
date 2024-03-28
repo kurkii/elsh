@@ -17,15 +17,14 @@ void init_builtin_commands(){
 }
 
 void builtin_exit(){
-    /* kill(getpid(), SIGTERM); */
-    printf("CALLING");
+    kill(getpid(), SIGKILL); 
 }
 
 void function(){}
 
 bool execute_builtin_command(char *command, char** argv){
     for(uint16_t i = 0; i < ELSH_NO_OF_BUILTIN_CMDS; i++){
-        if(commands[i].command == command){
+        if(strcmp(commands[i].command, command) == 0){
             void (*func_ptr)();
             func_ptr = commands[i].function;
             argv_buffer = argv;

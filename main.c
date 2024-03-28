@@ -9,8 +9,8 @@
 
 void print_prompt(){
     /* hostname is max 253 characters*/
-    char hostname[253]; 
-    gethostname(hostname, 253);
+    char hostname[254]; 
+    gethostname(hostname, 254);
     char *wd = "";
     printf("%s%s%s%s%s%s ", ELSH_PROMPT_LIMIT_LEFT, getlogin(), ELSH_PROMPT_DELIMITER, hostname, wd, ELSH_PROMPT_LIMIT_RIGHT);
 }
@@ -28,8 +28,8 @@ int main(){
         argv = parse_args(buffer);
 
         /* first check if theres a builtin command for that*/
-        if(!execute_builtin_command(argv[0], argv)){
-
+        if(execute_builtin_command(argv[0], argv)){
+            continue;
         }
 
         pid_t child_proc, wait_proc;
