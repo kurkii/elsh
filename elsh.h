@@ -1,8 +1,13 @@
 #include <stdbool.h>
-#define BUFFER_SIZE 0x1000
 #define ELSH_PROMPT_DELIMITER "@"
-#define ELSH_PROMPT_LIMIT_LEFT "["
-#define ELSH_PROMPT_LIMIT_RIGHT "]"
+#define ELSH_PROMPT_LIMIT_LEFT "{"
+#define ELSH_PROMPT_LIMIT_RIGHT "}"
+#define ELSH_PROMPT_SYMBOL "$ "
+
+#define BUFFER_SIZE 0x1000
+
+#define ELSH_VERSION_MAJOR 1
+#define ELSH_VERSION_MINOR 0
 char **parse_args(char *buffer);
 bool execute_builtin_command(char *command, char **argv);
 
@@ -14,3 +19,6 @@ typedef struct{
 
 void init_builtin_commands();
 void builtin_exit();
+int builtin_cd();
+void builtin_help();
+char *cwd2rel(char *cwd);

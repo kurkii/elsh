@@ -20,7 +20,10 @@ char **parse_args(char *buffer){
          return 0;
       }
    }
-   
+   /* incase the input is empty */
+   if(arg_buffer[0] == NULL){ 
+      arg_buffer[0] = "";
+   }
 
    return arg_buffer;
 }

@@ -1,7 +1,7 @@
 CC = gcc
 LD = ld
 LDFLAGS = -m elf_x86_64
-CFLAGS = -O2 -march=x86-64
+CFLAGS = -O2 -march=x86-64 -Wall
 BUILD_DIR = target
 
 all:
