@@ -49,6 +49,7 @@ int main(){
         
         fgets(buffer, BUFFER_SIZE, stdin);
 
+        pipe_two_processes(argv, argv);
         buffer[strcspn(buffer, "\n")] = 0;
         argv = parse_args(buffer);
         /* check for blank line so we dont do pointless computation */
@@ -89,6 +90,8 @@ int main(){
 
         /* wait for child to finish */
         while ((wait_proc = wait(&status)) > 0);
+
+        //pipe_two_processes(child_proc, NULL, argv, NULL);
 
         /* kill child */
         kill(child_proc, SIGTERM);

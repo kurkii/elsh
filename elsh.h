@@ -1,4 +1,5 @@
 #include <stdbool.h>
+#include <sys/types.h>
 #define ELSH_PROMPT_DELIMITER "@"
 #define ELSH_PROMPT_LIMIT_LEFT "{"
 #define ELSH_PROMPT_LIMIT_RIGHT "}"
@@ -22,3 +23,4 @@ void builtin_exit();
 int builtin_cd();
 void builtin_help();
 char *cwd2rel(char *cwd);
+int pipe_two_processes(char **argv_a, char **argv_b);
